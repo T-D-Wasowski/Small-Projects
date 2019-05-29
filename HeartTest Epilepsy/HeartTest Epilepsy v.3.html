@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>An empty page</title>
+	</head>
+	
+	<body>
+	
+		<!--<p id="display">Results from script execution will be shown here:</p>-->
+		
+		<!--<img src="HeartTest.png" alt="Pixel Heart" height="50" width="50">-->
+		
+		<script>
+		
+			var heartTimer = setInterval(heartSpam, 5);
+			var clearTimer = setInterval(clearPage, 5);
+		
+			function createImg(src, alt, height = "50", width = "50") {
+			
+				var img = document.createElement("img");
+				img.src = src;
+				img.alt = alt;
+				img.height = height;
+				img.width = width;
+				
+				document.body.appendChild(img)
+			
+			}
+			
+			function heartSpam() {
+			
+				for (i=0;i<500;i++) {
+				
+					imgIndex = Math.floor((Math.random() *4) + 1);
+				
+					//createImg("HeartTest" + i.toString() + ".png", "Pixel Heart"); Displays all images.
+					
+					createImg("HeartTest" + String(imgIndex - 1) + ".png", "Pixel Heart");
+				
+				}
+				
+			}
+			
+			function clearPage() {
+			
+				document.body.innerHTML = "";
+				
+			}
+			
+			heartSpam();
+			clearPage();
+			
+			
+			//location.reload()
+			
+		</script>
+		
+	</body>
+	
+</html>

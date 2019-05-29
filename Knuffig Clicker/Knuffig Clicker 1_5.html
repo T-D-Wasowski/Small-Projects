@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>An empty page</title>
+	</head>
+	
+	<body>
+	
+		<!--<p id="display">Results from script execution will be shown here:</p>-->
+		
+		<form>
+		
+			<input id="oneRandKnuff_btn" type="button" value="One Random Knuffig" onclick="oneRandKnuff();"/>
+			
+			<input id="manyRandKnuffs_btn" type="button" value="Many Random Knuffigs" onclick="manyRandKnuffs();"/>
+			
+			<input id="allKnuffs_btn"  type="button" value="All Knuffigs" onclick="allKnuffs();"/>
+			
+			<input id="clear_btn" type="button" value="Clear" onclick="clearPage();"/>
+			
+		</form>
+		
+		<script>
+		
+		
+		//make array into initialise function <--
+		
+			var knuffigs = [];
+			var knuffTotal = parseInt(prompt("How many knuffigs have you collected?"));
+						
+			for(i=0;i<knuffTotal;i++) {
+			
+				knuffigs[i] = "Knuff" + (i+1).toString() + ".jpg";
+			
+			}
+			
+			function createButton(id, type, value, onclick) {
+			
+				var input = document.createElement("input");
+				input.id = id;
+				input.type = type;
+				input.value = value;
+				input.onclick = onclick;
+				
+				document.body.appendChild(input);
+			
+			}
+			
+			function createKnuff(src, alt, height = "200", width = "200") {
+			
+				var img = document.createElement("img");
+				img.src = src;
+				img.alt = alt;
+				img.height = height;
+				img.width = width;
+				
+				document.body.appendChild(img);	 
+			
+			}
+			
+			function makeButtons() {
+			
+				createButton("oneRandKnuff_btn", "button", "One Random Knuffig", "oneRandKnuff();");
+				createButton("manyRandKnuffs_btn", "button", "Many Random Knuffigs", "manyRandKnuffs();");
+				createButton("allKnuffs_btn", "button", "All Knuffigs", "allKnuffs();");
+				createButton("clear_btn", "button", "Clear", "clearPage();");
+			
+			}
+			
+			function createRand(total) {
+			
+				var random = Math.floor((Math.random() * total) + 1);
+				return (random - 1);
+			
+			}
+			
+			function oneRandKnuff() {
+			
+				createKnuff("Knuffigs/" + knuffigs[createRand(knuffTotal)], "Random Knuff");
+				document.getElementById("oneRandKnuff_btn").value = "Another Random Knuffig";
+		
+			}
+			
+			function manyRandKnuffs() {
+			
+				var knuffAmount = prompt("How many knuffigs would you like?");
+				var size = "200"
+				
+				if (knuffAmount == "many") {
+					knuffAmount = 1000;
+					size = "100"
+				}
+				
+					
+				for (i=0;i<knuffAmount;i++) {
+				
+					createKnuff("Knuffigs/" + knuffigs[createRand(knuffTotal)], "Random Knuff",size, size); 
+				
+				}
+				
+				document.getElementById("manyRandKnuffs_btn").value = "Many More Random Knuffigs";
+	
+			}
+			
+			function allKnuffs() {
+			
+				for (i=0;i<5;i++) {
+				
+					createKnuff("Knuffigs/" + knuffigs[i], "Knuffig" + i);
+				
+				}
+				
+				document.getElementById("allKnuffs_btn").value = "All Knuffigs again";
+			
+			}
+			
+			function clearPage() {
+			
+				document.body.innerHTML = "";
+				makeButtons();
+				document.getElementById("clear_btn").value = "Clear Again";
+				
+			}
+			
+		
+		</script>
+		
+
+		
+	</body>
+	
+</html>

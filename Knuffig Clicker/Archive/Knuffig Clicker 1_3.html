@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>An empty page</title>
+	</head>
+	
+	<body>
+	
+		<!--<p id="display">Results from script execution will be shown here:</p>-->
+		
+		<form>
+		
+			<input id="oneRandKnuff_btn" type="button" value="One Random Knuffig" onclick="oneRandKnuff();"/>
+			
+			<input id="manyRandKnuffs_btn" type="button" value="Many Random Knuffigs" onclick="manyRandKnuffs();"/>
+			
+			<input id="allKnuffs_btn"  type="button" value="All Knuffigs" onclick="allKnuffs();"/>
+			
+		</form>
+		
+		<script>
+		
+		
+		//make array into initialise function <--
+		//random numb gen function
+		
+			var knuffigs = [];
+			var knuffTotal = parseInt(prompt("How many knuffigs have you collected?"));
+			
+			for(i=0;i<knuffTotal;i++) {
+			
+				knuffigs[i] = "TesterKnuff" + (i+1).toString() + ".jpg";
+			
+			}
+
+			function createKnuff(src, alt, height = "250", width = "250") {
+			
+				var img = document.createElement("img");
+				img.src = src;
+				img.alt = alt;
+				img.height = height;
+				img.width = width;
+				
+				document.body.appendChild(img);	 
+			
+			}
+			
+			function createRand(total) {
+			
+				var random = Math.floor((Math.random() * total) + 1);
+				return (random - 1);
+			
+			}
+			
+			function oneRandKnuff() {
+			
+				createKnuff("Knuffigs/" + knuffigs[createRand(knuffTotal)], "Tester Knuffig");
+				document.getElementById("oneRandKnuff_btn").value = "Another Random Knuffig";
+		
+			}
+			
+			function manyRandKnuffs() {
+			
+				var knuffAmount = prompt("How many knuffigs would you like?");
+				//var size = "250"
+				
+				if (knuffAmount == "many") {
+					knuffAmount = 1000;
+				//	size = "50"
+				}	
+					
+				for (i=0;i<knuffAmount;i++) {
+				
+					createKnuff("Knuffigs/" + knuffigs[createRand(knuffTotal)], "Tester Knuff",); //size, size
+				
+				}
+				
+				document.getElementById("manyRandKnuffs_btn").value = "Many More Random Knuffigs";
+	
+			}
+			
+			function allKnuffs() {
+			
+			}
+		
+		</script>
+		
+
+		
+	</body>
+	
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>An empty page</title>
+	</head>
+	
+	<body>
+	
+		<!--<p id="display">Results from script execution will be shown here:</p>-->
+		
+		<button type="button" onclick="oneRandKnuff();" >One Random Knuff</button>
+		
+		<script>
+		
+			var indexMax = prompt("Enter the amount of knuffigs you have");
+			
+			var knuffArray = [];
+			
+			for (i=0;i<indexMax;i++) {
+			
+				knuffArray.push([("Knuffig" + String(i) + ".png"), ("Knuffig number " + String(i))]);
+			
+			}
+			
+			function createKnuff(src, alt, height = "50", width = "50") {
+			
+				var img = document.createElement("img");
+				img.src = src;
+				img.alt = alt;
+				img.height = height;
+				img.width = width;
+				
+				document.body.appendChild(img)		
+			
+			}
+
+		
+			/*
+			
+			function bunchaKnuffs() {
+			
+			}
+		
+			function allKnuffs() {
+			
+			}
+			
+			*/
+			
+			
+			
+			function oneRandKnuff(array) {
+			
+				random = Math.Floor((Math.random() * indexMax) + 1);
+				
+				function createKnuff(array[random][0], array[random][1]);
+			
+			}
+			
+		
+		
+		</script>
+		
+	</body>
+	
+</html>
